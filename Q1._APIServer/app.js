@@ -1,30 +1,25 @@
-const app = require('express')();
 const express = require('express');
-const loggerMiddleware = require('volleyball');
+const app = express(); // creates an instance of an express application
+const router = require('./routes');
+const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
 
 
-// have middleware (logging, body-parser)
-app.use(loggerMiddleware);
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+const jsonParser = bodyParser.json();
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-// be able to access routes
-app.use(require('./routes'))
+// Middleware
+app.use(volleyball);
 
+// Load CSS
+app.use(express.static('public'));
 
-// have error handling middleware
-app.use((err, req, res, next) => { // get here by invoking next (in a preceding middleware function) with an error
-	console.error(err)
-	req.status(err.status || 500).send(err.message || "Internal Error")
-})
-
+// Routes
+app.use(jsonParser);
+app.use(urlencodedParser);
+app.use(router);
 
 
-
-
-
-// const router = require('express').Router()
-// app vs Router??
-	// Router is a mini app
-
+app.listen(3000, () => {
+  console.log('listening on port 3000');
+});

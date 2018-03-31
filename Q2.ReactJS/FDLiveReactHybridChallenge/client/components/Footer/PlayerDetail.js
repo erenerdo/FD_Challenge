@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 class PlayerDetail extends Component {
   render() {
     const { playerInfo } = this.props;
-    console.log('player info:');
-    console.log(playerInfo);
     return (
       <div className="player">
         <div className="playerTeam">

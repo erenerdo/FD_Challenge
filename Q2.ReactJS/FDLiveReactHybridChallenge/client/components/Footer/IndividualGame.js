@@ -13,6 +13,7 @@ class IndividualGame extends Component {
 
     const { home_team } = gameState;
     const { away_team } = gameState;
+    const { click } = this.props;
 
     // Get quarter number and assign it proper term
     let { quarter } = gameState;
@@ -21,7 +22,7 @@ class IndividualGame extends Component {
     this.gameTag = home_team.abbrev;
 
     return (
-      <div className="games__indiv" onClick={this.click}>
+      <div className="games__indiv" onClick={click(home_team.abbrev)}>
         <div className="games__indiv__team">
           <span className="team-abbrev">
             { home_team.abbrev }

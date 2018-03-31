@@ -33,7 +33,7 @@ class Footer extends Component {
 						return (
 							<div key={score.home_team.abbrev} className="games" >
 							<IndividualGame gameState={score} click={this.click} />
-							<SelectedDetail gameState={score} click={this.click} />
+							<SelectedDetail gameState={score} selectedGame={this.state.selectedGame} />
 							</div>
 						);
 					})
@@ -44,15 +44,15 @@ class Footer extends Component {
 		);
 	}
 
-	click () {
-
-		/*
-			let { selectedGame } = this.props;
-			if (selectedGame === this.gameTag) selectedGame = null;
-			else selectedGame = this.gameTag;
-			console.log(selectedGame);
-			*/
-		}
+	click (gameTag) {
+		return function() {
+			console.log('callback this:', this.state);
+			console.log(gameTag);
+			console.log(this.state.selectedGame);
+			if (this.state.selectedGame !== gameTag) this.setState({selectedGame: gameTag});
+			else this.setState({selectedGame: ''});
+		}.bind(this);
+	}
 }
 
 export default Footer;

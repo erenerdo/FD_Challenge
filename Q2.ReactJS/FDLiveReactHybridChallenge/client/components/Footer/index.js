@@ -1,35 +1,32 @@
 import React, { Component } from 'react';
+import IndividualGame from './IndividualGame';
+import axios from 'axios';
+import { API_URL_FOOTER_SCOREBOARD } from '../../api/constants';
+
 
 class Footer extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			footerScores: []
+		};
+	}
+
+	componentWillMount() {
+		axios.get(API_URL_FOOTER_SCOREBOARD)
+		.then(res => {
+			this.setState({footerScores: res.data});
+		});
+	}
 
 	render() {
-
+		const { footerScores } = this.state;
 		return (
 			<footer className="app__footer">
 				<div className="app__footer__arrow left">&lt;</div>
 				<div className="app__footer__wrap games">
 
-					<div className="games__indiv">
-						<div className="games__indiv__team">
-							<span className="team-abbrev">
-								GSW
-							</span>
-							<span className="team-score">
-								87
-							</span>
-						</div>
-						<div className="games__indiv__team">
-							<span className="team-abbrev">
-								OKC
-							</span>
-							<span className="team-score">
-								56
-							</span>
-						</div>
-						<div className="games__indiv__game-time">
-							7:34 4th
-						</div>
-					</div>
+					<IndividualGame gameState={footerScores[0]} />
 					<div className="games__indiv">
 						<div className="games__indiv__team">
 							<span className="team-abbrev">

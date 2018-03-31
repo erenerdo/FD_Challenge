@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import IndividualGame from './IndividualGame';
+import SelectedDetail from './SelectedDetail';
 import axios from 'axios';
 import { API_URL_FOOTER_SCOREBOARD } from '../../api/constants';
 
@@ -8,8 +9,10 @@ class Footer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			footerScores: []
+			footerScores: [],
+			selectedGame: ''
 		};
+		this.click = this.click.bind(this);
 	}
 
 	componentWillMount() {
@@ -27,7 +30,12 @@ class Footer extends Component {
 				<div className="app__footer__wrap games">
 				{
 					footerScores.map(score => {
-						return (<IndividualGame key={score.home_team.abbrev} gameState={score} />);
+						return (
+							<div key={score.home_team.abbrev} className="games" >
+							<IndividualGame gameState={score} click={this.click} />
+							<SelectedDetail gameState={score} click={this.click} />
+							</div>
+						);
 					})
 				}
 				</div>
@@ -35,6 +43,16 @@ class Footer extends Component {
 			</footer>
 		);
 	}
+
+	click () {
+
+		/*
+			let { selectedGame } = this.props;
+			if (selectedGame === this.gameTag) selectedGame = null;
+			else selectedGame = this.gameTag;
+			console.log(selectedGame);
+			*/
+		}
 }
 
 export default Footer;

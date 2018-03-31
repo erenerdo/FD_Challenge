@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import SelectedDetail from './SelectedDetail';
 
 class IndividualGame extends Component {
 
+  constructor(props) {
+    super(props);
+    this.gameTag = '';
+  }
   render() {
     const { gameState } = this.props;
     if (!gameState) return null;
@@ -13,8 +18,10 @@ class IndividualGame extends Component {
     let { quarter } = gameState;
     quarter = this.getQuarterTerm(quarter);
 
+    this.gameTag = home_team.abbrev;
+
     return (
-      <div className="games__indiv">
+      <div className="games__indiv" onClick={this.click}>
         <div className="games__indiv__team">
           <span className="team-abbrev">
             { home_team.abbrev }
@@ -33,7 +40,8 @@ class IndividualGame extends Component {
         </div>
         <div className="games__indiv__game-time">
           {`${gameState.time_left} ${quarter}`}
-				</div>
+        </div>
+        <SelectedDetail gameState={gameState} />
       </div>
     );
   }

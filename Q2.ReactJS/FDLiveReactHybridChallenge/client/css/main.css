@@ -272,4 +272,33 @@
   margin-left: auto;
 }
 
+.playersDetail {
+  color: #ddd;
+  font-family: 'Proxima-Regular', sans-serif;
+  display: flex;
+}
+
+.player {
+  display: flex;
+  margin-left: 10px;
+  margin-top: 1vh;
+  /*border: dashed white 1px; */
+}
+.playerInfo {
+  margin-left: 10px;
+}
+
+.playerName {
+  font-size: 16px;
+}
+
+.playerStats {
+  font-size: 14px;
+}
+
+.games {
+  display: flex;
+}
+
+
 /*# sourceMappingURL=main.css.map */

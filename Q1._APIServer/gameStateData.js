@@ -9,3 +9,5 @@ const gameStateData = [
 
 {id: 5, game_id: 5, home_team_score: 120, away_team_score: 100, broadcast: 'ESPN3', quarter: 4, time_left_in_quarter: '0:00', game_status:'FINAL'},
 ];
+
+module.exports = gameStateData;

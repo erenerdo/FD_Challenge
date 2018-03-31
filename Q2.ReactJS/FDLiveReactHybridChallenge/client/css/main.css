@@ -276,6 +276,7 @@
   color: #ddd;
   font-family: 'Proxima-Regular', sans-serif;
   display: flex;
+  border-right: 1px solid #ddd;
 }
 
 .player {

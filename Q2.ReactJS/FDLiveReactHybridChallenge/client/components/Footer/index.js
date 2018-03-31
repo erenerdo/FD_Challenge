@@ -32,7 +32,7 @@ class Footer extends Component {
 					footerScores.map(score => {
 						return (
 							<div key={score.home_team.abbrev} className="games" >
-							<IndividualGame gameState={score} click={this.click} />
+							<IndividualGame gameState={score} selectedGame={this.state.selectedGame} click={this.click} />
 							<SelectedDetail gameState={score} selectedGame={this.state.selectedGame} />
 							</div>
 						);

@@ -6,9 +6,17 @@ class IndividualGame extends Component {
   constructor(props) {
     super(props);
     this.gameTag = '';
+    this.abbrevMap = {
+      GSW: 'Warriors',
+      OKC: 'Thunder',
+      BOS: 'Celtics',
+      CHI: 'Bulls',
+      MEM: 'Grizzlies',
+      ATL: 'Hawks'
+    };
   }
   render() {
-    const { gameState } = this.props;
+    const { gameState, selectedGame } = this.props;
     if (!gameState) return null;
 
     const { home_team } = gameState;
@@ -21,11 +29,14 @@ class IndividualGame extends Component {
 
     this.gameTag = home_team.abbrev;
 
+    let homeTeamDisplay = selectedGame !== home_team.abbrev ? home_team.abbrev : this.abbrevMap[home_team.abbrev];
+    let awayTeamDisplay = selectedGame !== home_team.abbrev ? away_team.abbrev : this.abbrevMap[away_team.abbrev];
+
     return (
       <div className="games__indiv" onClick={click(home_team.abbrev)}>
         <div className="games__indiv__team">
           <span className="team-abbrev">
-            { home_team.abbrev }
+            { homeTeamDisplay }
 					</span>
           <span className="team-score">
             { home_team.score }
@@ -33,7 +44,7 @@ class IndividualGame extends Component {
         </div>
         <div className="games__indiv__team">
           <span className="team-abbrev">
-            { away_team.abbrev }
+            { awayTeamDisplay }
 					</span>
           <span className="team-score">
             { away_team.score }
@@ -54,5 +65,6 @@ class IndividualGame extends Component {
     else return '4th';
   }
 }
+
 
 export default IndividualGame;

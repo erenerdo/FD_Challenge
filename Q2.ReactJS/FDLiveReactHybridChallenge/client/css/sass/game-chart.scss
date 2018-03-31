@@ -1,0 +1,99 @@
+.app {
+
+	&__game-chart {
+
+		.score {
+			display:flex;
+			justify-content: space-between;
+			padding: 25px 20px;
+
+			&__last-play {
+				background:#f2f2f2;
+				text-align:center;
+				width:100%;
+				padding:5px;
+				font-size:10px;
+				font-family:'Gotham-Light', sans-serif;
+				text-transform:uppercase;
+			}
+
+			&__team {
+				display: flex;
+				width: 25%;
+				justify-content: space-between;
+
+				&.away-team {
+					color:#FEBA00;
+					text-align:left;
+				}
+
+				&.home-team {
+					color:#007BC5;
+					text-align:right;
+				}
+
+				&__name {
+					font-size:18px;
+					font-family:'Proxima-Semibold', sans-serif;
+
+					.mascot {
+						display:block;
+					}
+
+				}
+
+				&__score {
+					font-size:40px;
+					font-family:'Proxima-Bold', sans-serif;
+				}
+			}
+
+			&__game-info {
+				text-align:center;
+
+				&__game-time {
+					font-size:15px;
+					font-family:'Proxima-Regular', sans-serif;
+				}
+
+				&__venue {
+					font-size:12px;
+					font-family:'Proxima-Regular', sans-serif;
+					color:#aaa;
+					margin-top:10px;
+				}
+			}
+
+			&__shot-chart {
+				display: flex;
+				justify-content: space-between;
+				padding: 30px 40px;
+
+				&__team {
+
+					&.away-team {
+						color:#FEBA00;
+					}
+
+					&.home-team {
+						color:#007BC5;
+					}
+
+
+					.stat {
+						margin:15px 0;
+						text-align:center;
+						font-size:22px;
+						font-family:'Proxima-Regular', sans-serif;
+
+						&__title {
+							display:block;
+							font-size:16px;
+							color:#aaa;
+						}
+					}
+				}
+			}
+		}
+	}
+}

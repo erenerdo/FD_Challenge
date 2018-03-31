@@ -1,0 +1,16 @@
+.app {
+
+	&__section {
+		background:#fff;
+
+		&__title {
+			background:#000;
+			color:#fff;
+			font-family:"Gotham-Medium", sans-serif;
+			font-size:15px;
+			text-align: center;
+			text-transform: uppercase;
+			padding:5px;
+		}
+	}
+}

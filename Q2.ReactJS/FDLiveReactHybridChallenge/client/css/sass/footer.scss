@@ -1,0 +1,75 @@
+.app {
+
+	&__footer {
+		background:#4F5961;
+		position:fixed;
+		bottom:0;
+		left:0;
+		height:75px;
+		width:100%;
+		display:flex;
+		justify-content: flex-start;
+		flex-direction: row;
+
+		.games {
+			display:flex;
+
+			&__indiv {
+				color:#ddd;
+				font-family:'Proxima-Regular', sans-serif;
+				padding:0 20px;
+				height:75px;
+				width: 78px;
+				cursor:pointer;
+
+				&:hover {
+					background:#606971;
+				}
+
+				&:last-of-type {
+					border-right:1px solid #ddd;
+				}
+
+				& + .games__indiv {
+					border-left:1px solid #ddd;
+				}
+
+				&__team {
+					font-size:14px;
+					display:flex;
+					justify-content: space-between;
+					margin-top:10px;
+
+					& + .games__indiv__team {
+						margin-top:3px;
+					}
+				}
+
+				&__game-time {
+					font-size:11px;
+					margin-top:2px;
+				}
+			}
+		}
+
+		&__arrow {
+			align-self:center;
+			background:#3E464D;
+			color:#fff;
+			font-size:20px;
+			font-family:'Gotham-Light', sans-serif;
+			height:100%;
+			line-height: 75px;
+			padding:0 5px;
+			cursor:pointer;
+
+			&:hover {
+				background:#444;
+			}
+
+			&.right {
+				margin-left: auto;
+			}
+		}
+	}
+}

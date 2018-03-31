@@ -1,0 +1,23 @@
+.app__header {
+	display:flex;
+	background:#1493FF;
+
+	&__main-nav {
+		display:flex;
+		color:#fff;
+		justify-content: space-around;
+		list-style:none;
+
+		li {
+			margin:0 25px;
+			font-family:'Proxima-Regular', sans-serif;
+
+			&.logo {
+				background:url(../assets/fd-logo.png);
+				display:block;
+				width:129px;
+				height:23px;
+			}
+		}
+	}
+}

@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 class IndividualGame extends Component {
 
   render() {
-    console.log('hey props', this.props);
     const { gameState } = this.props;
+    if (!gameState) return null;
+
     const { home_team } = gameState;
     const { away_team } = gameState;
 

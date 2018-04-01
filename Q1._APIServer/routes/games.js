@@ -6,21 +6,25 @@ const gameStateData = require('../gameStateData');
 
 router.get('/', (req, res, next) => {
   const date = req.query.date;
-  console.log(date);
+
+  // Check if date passed in as query string
   if (date === undefined) {
+    // if not, return all games
     res.json(getGamesWithScores());
   }
   else {
-    console.log('hey');
+    // if so, return all games from date
     res.json(getGamesFromDate(date));
   }
 });
 
 router.get('/:id', (req, res, next) => {
-  const gameId = req.params.id;
+  const gameId = +req.params.id;
+  // return games with the scores for the specified gameId
   res.json(getGamesWithScores()[gameId - 1]);
 });
 
+// Helper function that iterates through all games, and only return games from specified date input
 function getGamesFromDate(date) {
   const games = getGamesWithScores();
   const gamesOnDate = [];
@@ -34,6 +38,7 @@ function getGamesFromDate(date) {
   return gamesOnDate;
 }
 
+// adds score to all of the games
 function getGamesWithScores() {
 
   for (let i = 0; i < gameData.length; i++) {

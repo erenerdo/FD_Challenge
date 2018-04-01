@@ -11,9 +11,6 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 // Middleware
 app.use(volleyball);
 
-// Load CSS
-app.use(express.static('public'));
-
 // Routes
 app.use(jsonParser);
 app.use(urlencodedParser);
@@ -22,7 +19,7 @@ app.use(router);
 // have error handling middleware
 app.use((err, req, res, next) => {
   console.error(err);
-  req.status(err.status || 500).send(err.message || "Internal Error")
+  req.status(err.status || 500).send(err.message || 'Internal Error');
 });
 
 app.listen(3000, () => {

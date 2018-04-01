@@ -31,7 +31,7 @@ class DepthChart {
     // Get players array for the position entered in
     let positionPlayers = this.depthChartMap[position];
 
-    // Check to see if player is already in depth chart, (ex. if we need to move players up or down the depth chart) if they are , they will be removed
+    // Check to see if player is already in depth chart, (ex. if we need to move players up or down the depth chart) if they are , they will be removed, if not depth chart will stay the same
     this.removePlayerFromDepthChart(player, position);
 
     // Add player at new position depth
@@ -83,7 +83,7 @@ class DepthChart {
       }
     }
   }
-
+  // Helper functions for class and other functions
   removePlayerAtIdx(positionPlayers, idx) {
     positionPlayers.splice(idx, 1);
   }
@@ -91,9 +91,7 @@ class DepthChart {
   addPlayerAtPositionDepth(player, positionDepth, positionPlayers) {
     positionPlayers.splice(positionDepth, 0, player);
   }
-
 }
-
 
 /// Test Data
 var lebron = {

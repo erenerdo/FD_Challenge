@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// Component to show individual player stats when a game is selected
 class PlayerDetail extends Component {
   render() {
     const { playerInfo } = this.props;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SelectedDetail from './SelectedDetail';
 
+// Component to display an individual game
 class IndividualGame extends Component {
 
   constructor(props) {
@@ -29,6 +30,7 @@ class IndividualGame extends Component {
 
     this.gameTag = home_team.abbrev;
 
+    // Get correct team display names. It will change to full name is game is selected
     let homeTeamDisplay = selectedGame !== home_team.abbrev ? home_team.abbrev : this.abbrevMap[home_team.abbrev];
     let awayTeamDisplay = selectedGame !== home_team.abbrev ? away_team.abbrev : this.abbrevMap[away_team.abbrev];
 
@@ -58,6 +60,7 @@ class IndividualGame extends Component {
     );
   }
 
+  // Helper function to convert quarter number to correct term
   getQuarterTerm(quarter) {
     if (quarter === 1) return '1st';
     else if (quarter === 2) return '2nd';

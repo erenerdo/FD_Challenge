@@ -16,6 +16,7 @@ class Footer extends Component {
 	}
 
 	componentWillMount() {
+		// Make API call to get footer data and set it to the local state
 		axios.get(API_URL_FOOTER_SCOREBOARD)
 		.then(res => {
 			this.setState({footerScores: res.data});
@@ -29,6 +30,7 @@ class Footer extends Component {
 				<div className="app__footer__arrow left">&lt;</div>
 				<div className="app__footer__wrap games">
 				{
+					// Iterate through reach score and map them to the correct React components
 					footerScores.map(score => {
 						return (
 							<div key={score.home_team.abbrev} className="games" >
@@ -44,11 +46,9 @@ class Footer extends Component {
 		);
 	}
 
+// Click function to be used in each game component that returns a function that will change the footers state, thus causing a rerender
 	click (gameTag) {
 		return function() {
-			console.log('callback this:', this.state);
-			console.log(gameTag);
-			console.log(this.state.selectedGame);
 			if (this.state.selectedGame !== gameTag) this.setState({selectedGame: gameTag});
 			else this.setState({selectedGame: ''});
 		}.bind(this);

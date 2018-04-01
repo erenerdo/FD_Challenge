@@ -35,7 +35,10 @@ class DepthChart {
     this.removePlayerFromDepthChart(player, position);
 
     // Add player at new position depth
-    this.addPlayerAtPositionDepth(player, positionDepth, positionPlayers);
+    // If positionDepth not defined just add the player to the end of the depth chart
+    if (positionDepth === undefined) positionPlayers.push(player);
+    // Otherwise add at the position inputted
+    else this.addPlayerAtPositionDepth(player, positionDepth, positionPlayers);
   }
 
   removePlayerFromDepthChart(player, position) {
@@ -93,7 +96,7 @@ class DepthChart {
   }
 }
 
-/// Test Data
+/// Test Player Data
 var lebron = {
   player_id: 1,
   name: 'King James'

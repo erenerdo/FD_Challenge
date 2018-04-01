@@ -17,6 +17,11 @@ class DepthChart {
   }
 
   addPlayerToDepthChart(player, position, positionDepth) {
+    // Check of edge case, position not in depthchart list
+    if (!(position in this.depthChartMap)) {
+      throw Error('Position not in this depth chart');
+    }
+
 
     let positionPlayers = this.depthChartMap[position];
 
@@ -60,7 +65,7 @@ class DepthChart {
     }
   }
 
-  gertPlayersUnderPlayerInDepthChart(player, position) {
+  getPlayersUnderPlayerInDepthChart(player, position) {
     console.log('\nPlayers under', player.name, 'for', position + ':');
 
     let positionPlayers = this.depthChartMap[position];
@@ -113,11 +118,15 @@ var aaron = {
   name: 'Aaron Judge'
 };
 
+//
+// Part a.)
 // Tests for NFL
+//
 
 // Create NFL depths chart from class
 const nflDepthChart = new DepthChart(['QB', 'WR', 'RB', 'TE', 'K', 'P', 'KR', 'PR']);
 
+console.log('\nTesting for NFL positions:');
 
 // Test addPlayersToDepthChart
 nflDepthChart.addPlayerToDepthChart(lebron, 'WR', 0);
@@ -131,7 +140,7 @@ nflDepthChart.addPlayerToDepthChart(lebron, 'K', 0);
 nflDepthChart.getFullDepthChart();
 
 // Test getPlayersUnderPlayerInDepthChart
-nflDepthChart.gertPlayersUnderPlayerInDepthChart(melo, 'WR');
+nflDepthChart.getPlayersUnderPlayerInDepthChart(melo, 'WR');
 
 // Test removePlayerFromDepthChart
 // Remove lebron from WR to test remove function
@@ -139,3 +148,38 @@ nflDepthChart.removePlayerFromDepthChart(lebron, 'WR');
 
 // Get full depth to see if LeBron is removed from WR, Lebron is id 1
 nflDepthChart.getFullDepthChart();
+
+
+//
+// Part b.)
+// Tests for MLB
+//
+
+const mlbDepthChart = new DepthChart(['SP', 'RP', 'C', '1B', '2B', '3B', 'SS', 'LF', 'RF', 'CF', 'DH']);
+
+console.log('\nTesting for MLB positions:');
+
+
+// Test addPlayersToDepthChart
+mlbDepthChart.addPlayerToDepthChart(lebron, '1B', 0);
+mlbDepthChart.addPlayerToDepthChart(melo, '1B', 0);
+mlbDepthChart.addPlayerToDepthChart(odell, '1B', 2);
+mlbDepthChart.addPlayerToDepthChart(antonio, 'SP', 0);
+mlbDepthChart.addPlayerToDepthChart(aaron, 'C', 0);
+mlbDepthChart.addPlayerToDepthChart(lebron, 'SS', 0);
+
+
+// Test addFullDepthChart
+mlbDepthChart.getFullDepthChart();
+
+// Test getPlayersUnderPlayerInDepthChart
+mlbDepthChart.getPlayersUnderPlayerInDepthChart(melo, '1B');
+
+// Test removePlayerFromDepthChart
+// Remove lebron from 1B to test remove function
+mlbDepthChart.removePlayerFromDepthChart(lebron, '1B');
+
+// Get full depth to see if LeBron is removed from WR, Lebron is id 1
+mlbDepthChart.getFullDepthChart();
+
+

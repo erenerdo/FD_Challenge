@@ -4,7 +4,7 @@ const router = express.Router();
 const nba = require('./nba');
 
 router.get('/', function (req, res, next) {
-  res.json('test index');
+  res.json('Welcome to the homepage');
 });
 
 router.use('/nba', nba);

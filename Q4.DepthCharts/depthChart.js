@@ -1,12 +1,18 @@
 /*
 
-Created a depth chart class to be used for any sport. The depth chart class takes in an array of position for it's constructor and will create the depth chart based off the positions entered in
+Created a depth chart class to be used for any sport.
+
+The depth chart class takes in an array of position for it's constructor and will create the depth chart based off the positions entered in.
+
+Each position will be a key in an hashMap and the value will be an array containing each player object.
+The index in the array will signify the players position on the depth chart. Index 0 is starting, 1 is back up, 2 is 2nd string, ..., etc.
 
 */
 
 class DepthChart {
+
   constructor(positions) {
-    // Create depth chart map
+    // Create depth chart hash map. Using JS object as hashmap.
     this.depthChartMap = {};
 
     // Add each position as a key to the depthchart
@@ -17,30 +23,27 @@ class DepthChart {
   }
 
   addPlayerToDepthChart(player, position, positionDepth) {
-    // Check of edge case, position not in depthchart list
+    // Check for edge case, position entered in not in depthchart list
     if (!(position in this.depthChartMap)) {
       throw Error('Position not in this depth chart');
     }
 
-
+    // Get players array for the position entered in
     let positionPlayers = this.depthChartMap[position];
 
-    // Check to see if player is already in depth chart, if they are remove them
-    for (let i = 0; i < positionPlayers.length; i++) {
-      let curPlayer = positionPlayers[i];
-
-      // If the player we are trying to add is in the depth chart, remove them
-      if (curPlayer.player_id === player.player_id) {
-        this.removePlayerAtIdx(positionPlayers, i);
-        break;
-      }
-    }
+    // Check to see if player is already in depth chart, (ex. if we need to move players up or down the depth chart) if they are , they will be removed
+    this.removePlayerFromDepthChart(player, position);
 
     // Add player at new position depth
     this.addPlayerAtPositionDepth(player, positionDepth, positionPlayers);
   }
 
   removePlayerFromDepthChart(player, position) {
+    // Check for edge case, position entered in not in depthchart list
+    if (!(position in this.depthChartMap)) {
+      throw Error('Position not in this depth chart');
+    }
+
     let positionPlayers = this.depthChartMap[position];
 
     for (let i = 0; i < positionPlayers.length; i++) {
@@ -135,6 +138,7 @@ nflDepthChart.addPlayerToDepthChart(odell, 'WR', 2);
 nflDepthChart.addPlayerToDepthChart(antonio, 'KR', 0);
 nflDepthChart.addPlayerToDepthChart(aaron, 'QB', 0);
 nflDepthChart.addPlayerToDepthChart(lebron, 'K', 0);
+console.log('\nPlayers added to depth chart.');
 
 // Test addFullDepthChart
 nflDepthChart.getFullDepthChart();
@@ -159,7 +163,6 @@ const mlbDepthChart = new DepthChart(['SP', 'RP', 'C', '1B', '2B', '3B', 'SS', '
 
 console.log('\nTesting for MLB positions:');
 
-
 // Test addPlayersToDepthChart
 mlbDepthChart.addPlayerToDepthChart(lebron, '1B', 0);
 mlbDepthChart.addPlayerToDepthChart(melo, '1B', 0);
@@ -167,7 +170,7 @@ mlbDepthChart.addPlayerToDepthChart(odell, '1B', 2);
 mlbDepthChart.addPlayerToDepthChart(antonio, 'SP', 0);
 mlbDepthChart.addPlayerToDepthChart(aaron, 'C', 0);
 mlbDepthChart.addPlayerToDepthChart(lebron, 'SS', 0);
-
+console.log('\nPlayers added to depth chart.');
 
 // Test addFullDepthChart
 mlbDepthChart.getFullDepthChart();
@@ -179,7 +182,5 @@ mlbDepthChart.getPlayersUnderPlayerInDepthChart(melo, '1B');
 // Remove lebron from 1B to test remove function
 mlbDepthChart.removePlayerFromDepthChart(lebron, '1B');
 
-// Get full depth to see if LeBron is removed from WR, Lebron is id 1
+// Get full depth to see if LeBron is removed from 1B, Lebron is id 1
 mlbDepthChart.getFullDepthChart();
-
-
